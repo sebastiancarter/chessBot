@@ -5,7 +5,7 @@ board = chess.Board()
 
 
 if __name__ == "__main__":
-    chessBot = bot.randomBot() 
+    chessBot = bot.randomBot("BLACK") 
     print("welcome to chess")
     
     while not board.is_game_over():
@@ -13,6 +13,7 @@ if __name__ == "__main__":
         validMove = False
         while not validMove:
             print(board)
+            print("viable moves: ", board.legal_moves)
             print("input your move")
             try:
                 inputMove = input()
@@ -23,7 +24,7 @@ if __name__ == "__main__":
                 validMove = True
                 board.push(move)
         ### BOT TURN ###
-        botMove = bot.getMove(board)
-        board.push(bot.getMove(board))
-        print("bot made the move ", botMove)
+        chessBotMove = chessBot.getMove(board)
+        board.push(chessBotMove)
+        print("chessBot made the move ", chessBotMove)
 
