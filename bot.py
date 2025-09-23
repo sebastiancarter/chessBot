@@ -19,3 +19,14 @@ class randomBot(chessBot):
         moves = list(board.legal_moves)
         return random.choice(moves)
 
+class minimaxBot(chessBot):
+    def __init__(self, colour):
+        super().__init__(colour)
+
+
+    def getMove(self, board):
+        pass
+
+
+    def evaluationFunc(board):
+        pass
