@@ -20,9 +20,12 @@ if __name__ == "__main__":
                 move = board.parse_san(inputMove)
             except ValueError:
                 print("that is not a valid move, try again!")
-            finally:
-                validMove = True
+                continue
+            if board.is_legal(move):
                 board.push(move)
+                validMove = True
+            else:
+                print("that is not a legal move!")
         ### BOT TURN ###
         chessBotMove = chessBot.getMove(board)
         board.push(chessBotMove)
