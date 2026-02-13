@@ -5,8 +5,22 @@ board = chess.Board()
 
 
 if __name__ == "__main__":
-    chessBot = bot.randomBot("BLACK") 
+    validInput = False
     print("welcome to chess")
+    print("you are playing as white, the bot is playing as black")
+    while not validInput:
+        print("what bot do you want to play against? (type the number)")
+        print("1. randomBot")
+        print("2. minimaxBot")
+        inputBot = input()
+        if inputBot == "1":
+            chessBot = bot.randomBot(chess.BLACK)
+            validInput = True
+        elif inputBot == "2":
+            chessBot = bot.minimaxBot(chess.BLACK)
+            validInput = True
+        else:
+            print("that is not a valid input, try again!")
     
     while not board.is_game_over():
         ### USER TURN ###
