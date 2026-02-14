@@ -31,6 +31,9 @@ if __name__ == "__main__":
             print("input your move")
             try:
                 inputMove = input()
+                if inputMove == "quit":
+                    print("quitting game...")
+                    exit()
                 move = board.parse_san(inputMove)
             except ValueError:
                 print("that is not a valid move, try again!")
@@ -42,6 +45,14 @@ if __name__ == "__main__":
                 print("that is not a legal move!")
         ### BOT TURN ###
         chessBotMove = chessBot.getMove(board)
-        board.push(chessBotMove)
-        print("chessBot made the move ", chessBotMove)
+        if chessBotMove is None:
+            print("chessBot has no legal moves, you win!")
+            break
+        else:
+            board.push(chessBotMove)
+            print("chessBot made the move ", chessBotMove)
+    print("thank you for playing!")
+    print("the final board state was: ")
+    print(board)
+    print("the result was: ", board.outcome())
 
