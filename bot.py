@@ -77,17 +77,19 @@ class minimaxBot(chessBot):
         return bestAction  
 
     def moveOrderingFunc(self, moveList):
-        # Simple move ordering function that 
+        # TODO: implement a move ordering function to improve speed
+        pass
 
     def evaluationFunc(self, board, depth):
-        # TODO: improve the evaluation func, could increase reward for a draw if playing as black or losing if playing as white,
-        # could also add some positional evaluation stuff.
+        # TODO: add some positional evaluation stuff
         if chessUtils.isWin(board, self.colour):
             return 1000-depth
-        elif chessUtils.isWin(board, not self.colour): # TODO: will need to handle this when I implement choosing colour
+        elif chessUtils.isWin(board, not self.colour): 
             return -1000
-        elif board.is_stalemate():
-            return 0
+        elif board.is_stalemate() and self.colour == chess.BLACK:
+            return 500
+        elif board.is_stalemate() and self.colour == chess.WHITE:
+            return -500
         else:
             botMaterial = chessUtils.getMaterial(board, self.colour)
             playerMaterial = chessUtils.getMaterial(board, not self.colour)
