@@ -28,7 +28,7 @@ class minimaxBot(chessBot):
 
     def maxVal(self, board, alpha, beta, currDepth):
         if currDepth == 0 or board.is_game_over():
-            return self.evaluationFunc(board), None
+            return self.evaluationFunc(board, currDepth), None
         
         maxValue = None
         bestAction = None
@@ -52,7 +52,7 @@ class minimaxBot(chessBot):
     
     def minVal(self, board, alpha, beta, currDepth):
         if currDepth == 0 or board.is_game_over():
-            return self.evaluationFunc(board), None
+            return self.evaluationFunc(board, currDepth), None
         
         minValue = None
         bestAction = None
@@ -76,12 +76,14 @@ class minimaxBot(chessBot):
         (score, bestAction) = self.maxVal(board, None, None, self.depth)
         return bestAction  
 
+    def moveOrderingFunc(self, moveList):
+        # Simple move ordering function that 
 
-    def evaluationFunc(self, board):
+    def evaluationFunc(self, board, depth):
         # TODO: improve the evaluation func, could increase reward for a draw if playing as black or losing if playing as white,
         # could also add some positional evaluation stuff.
         if chessUtils.isWin(board, self.colour):
-            return 1000
+            return 1000-depth
         elif chessUtils.isWin(board, not self.colour): # TODO: will need to handle this when I implement choosing colour
             return -1000
         elif board.is_stalemate():
