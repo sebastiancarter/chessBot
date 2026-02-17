@@ -1,5 +1,5 @@
 # Welcome to my chess bot / chess engine
-I made this mostly just for fun and a bit of experience, using some stuff I learned in my AI class. I currently have a random bot which makes random choices and a minimax bot using alpha beta pruning. The minimax bot is still quite slow, I will optimize it later 
+I made this mostly just for fun and a bit of experience, using some stuff I learned in my AI class. I currently have a random bot which makes random choices and a minimax bot using alpha beta pruning. The minimax bot is still quite slow, I may optimize it later
 
 
 # setup
@@ -12,7 +12,7 @@ and then
 conda activate chessEnv
 ```
 
-Might add linux support later
+Might add a linux specific conda env later
 
 # How to play
 To play, first make sure you are in the correct conda environment. If you are not, run
